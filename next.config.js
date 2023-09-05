@@ -1,15 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // images: {
-  // remotePatterns: [
-  //   {
-  //     protocol: "",
-  //     hostname: "",
-  //     port: "",
-  //     pathname: "",
-  //   },
-  // ],
-  // },
+  images: {
+    domains: ["dialsecret.fr", "source.unsplash.com"],
+  },
 };
 
 module.exports = nextConfig;

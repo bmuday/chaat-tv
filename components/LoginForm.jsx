@@ -54,8 +54,8 @@ export default function LoginForm() {
     }
   };
   return (
-    <div className="w-full max-w-md p-8 space-y-3 text-gray-800 rounded-xl bg-gray-50">
-      <form onSubmit={handleLogin} className="space-y-6">
+    <div className="p-8 space-y-3 text-gray-800 rounded-xl bg-gray-50">
+      <form onSubmit={handleLogin} className="container space-y-6">
         <div className="space-y-1 text-sm">
           <label htmlFor="email" className="block text-gray-600">
             Email

@@ -1,17 +1,10 @@
 "use client";
 import Link from "next/link";
-import Avatar from "./avatar";
 import { headerLinks } from "@/lib/constants";
 import classnames from "classnames";
-import CurrentUser from "./CurrentUser";
-import { usePathname } from "next/navigation";
-import { useUserStore } from "@/stores";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Header() {
-  const pathname = usePathname();
-  const displayCurrentUser = pathname === "/";
-  const user = useUserStore((state) => state.user);
-
   return (
     <header className="p-4 text-gray-800">
       <div className="flex items-center justify-between h-16 border-b-gray-100">
@@ -32,24 +25,21 @@ export default function Header() {
           </svg>
         </Link>
 
-        {displayCurrentUser && <CurrentUser />}
-
         <div className="flex">
           <div className="flex items-center flex-shrink-0 mr-5 md:flex">
-            {!user &&
-              headerLinks.map((l, index) => {
-                const link = classnames({
-                  "self-center px-8 py-3 rounded": true,
-                  "font-semibold bg-violet-600 text-gray-50": l.active,
-                });
-                return (
-                  <Link key={index} className={link} href={l.url}>
-                    {l.label}
-                  </Link>
-                );
-              })}
+            {headerLinks.map((l, index) => {
+              const link = classnames({
+                "self-center px-8 py-3 rounded": true,
+                "font-semibold bg-violet-600 text-gray-50": l.active,
+              });
+              return (
+                <Link key={index} className={link} href={l.url}>
+                  {l.label}
+                </Link>
+              );
+            })}
           </div>
-          {user && <Avatar />}
+          <UserButton afterSignOutUrl="/" />
         </div>
       </div>
     </header>

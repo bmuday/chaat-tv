@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Body from "../components/Body";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Chat App",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Body>{children}</Body>
+      <ClerkProvider>
+        <Body>{children}</Body>
+      </ClerkProvider>
     </html>
   );
 }
